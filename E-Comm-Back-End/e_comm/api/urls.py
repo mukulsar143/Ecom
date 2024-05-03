@@ -21,5 +21,6 @@ urlpatterns = [
     path("", include(router.urls)),
     path("", include(product_router.urls)),
     path("", include(cart_item.urls)),
+    path("cartitem/", CartItemView.as_view()),
 
 ]

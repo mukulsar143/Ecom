@@ -6,14 +6,14 @@ from  django.conf import settings
 
 # Create your models here.
 
-class profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'profile')
-    username = models.CharField(max_length = 100, blank = True, null = True)
-    is_email_verified = models.BooleanField(default = False)
-    email_token = models.CharField(null = True, blank = True, max_length=50)
+# class profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'profile')
+#     username = models.CharField(max_length = 100, blank = True, null = True)
+#     is_email_verified = models.BooleanField(default = False)
+#     email_token = models.CharField(null = True, blank = True, max_length=50)
     
-    def __str__(self) -> str:
-        return str(self.user)
+#     def __str__(self) -> str:
+#         return str(self.user)
     
     
         
@@ -71,8 +71,8 @@ class Review(models.Model):
         return self.description    
 
 class Cart(models.Model):
-    owner = models.ForeignKey(profile, on_delete=models.CASCADE, null = True, blank=True)
-    cart_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null = True, blank=True)
+    cart_id = models.UUIDField(default=uuid.uuid4, auto_created=True, editable=False, primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     completed = models.BooleanField(default=False)
     session_id = models.CharField(max_length=100)
@@ -110,7 +110,7 @@ class Cartitems(models.Model):
    
 
 class SavedItem(models.Model):
-    owner = models.ForeignKey(profile, on_delete=models.CASCADE, null = True, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null = True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
     added = models.IntegerField(default=0)
     

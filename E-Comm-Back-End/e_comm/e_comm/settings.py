@@ -39,19 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'core',
     'api',
     'UserProfile',
-    'storeapp',
     'django_filters',
+    'storeapp',
     'rest_framework.authtoken',
-    "razorpay_backend.apps.RazorpayBackendConfig",
-    'razorpaybackend', 
+    'corsheaders',
+    # 'razorpaybackend', 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -126,6 +126,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'staticfiles'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIR = {
+    os.path.join(BASE_DIR, '/static/')
+}
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '/static/')
+MEDIA_URL = '/ecom/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -144,3 +155,8 @@ REST_FRAMEWORK = {
 }
 RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID")
 RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET")
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+  
+]

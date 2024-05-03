@@ -6,7 +6,7 @@ from django.db import transaction
 class ProductSerializers(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['id', 'name', 'description','discount', 'slug', 'price']
+        fields = ['id', 'name', 'description','discount', 'slug', 'price', 'image', 'category']
                 
         
 class CategoriesSerializer(serializers.ModelSerializer):

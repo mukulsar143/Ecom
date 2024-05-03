@@ -1,0 +1,335 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.shop
+{
+    width: 100%;
+    padding: 20px 30px;
+}
+
+.shop h2
+{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #232323;
+    font-size: 32px;
+    font-weight: 300;
+}
+.shop p
+{
+    margin-top: 5px;
+    color: #8a8a8a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.shop .container
+{
+    min-width: 100%;
+    display: flex;
+    margin-top: 20px;
+}
+
+.shop .container .left_box
+{
+    width: 25%;
+}
+
+.shop .container .left_box .categories
+{
+    border: 3px solid #f6f6f6;
+    width: 250px;     
+}
+.shop .container .left_box .categories .header
+
+{
+    min-width: 100%;
+    padding: 10px 20px;
+    background: #f6f6f6;
+}
+.shop .container .left_box .categories .header h2
+{
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #232323;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.shop .container .left_box .categories .box
+{
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px 20px;
+} 
+
+.shop .container .left_box .categories .box ul
+{
+    min-width: 100%;
+}
+.shop .container .left_box .categories .box ul li
+{
+    list-style: none;
+    margin-left: 10px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #8a8a8a;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.shop .container .left_box .categories .box ul li:hover
+{
+    color: #232323;
+}
+
+.shop .container .left_box .banner
+{
+    margin-top: 20px;
+    width: 250px;
+}
+
+.shop .container .left_box .banner .img_box img
+{
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+}
+
+.shop .container .right_box
+{
+    width: 74%;
+}
+.shop .container .right_box .banner
+{
+    min-width: 100%;
+}
+
+.shop .container .right_box .banner .img_box img
+{
+    width: 100%;
+    object-fit: cover;
+}
+.shop .container .right_box .product_box
+{
+    min-width: 100%;
+    padding: 10px 20px;
+}
+.shop .container .right_box .product_box h2
+{
+    margin-top: 10px;
+    color: #232323;
+    letter-spacing: 1x;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+.shop .container .right_box .product_box .product_container
+{
+    min-width: 100%;
+    display: flex;
+    flex-direction: wrap;
+}
+
+.shop .container .right_box .product_box .product_container .box
+{
+    padding: 10px 10px;
+    width: 240px;
+    height: 350px;
+    overflow: hidden;
+    border: 3px solid #f6f6f6;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+.shop .container .right_box .product_box .product_container .box .img_box 
+{
+    display: flex;
+    margin-left: 20px;
+}
+.shop .container .right_box .product_box .product_container .box .img_box img
+{
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+}
+.shop .container .right_box .product_box .product_container .box .img_box .icon
+{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+    margin-top: 10px;
+    margin-left: 40px;
+    transition: 0.5s;
+}
+.shop .container .right_box .product_box .product_container .box .img_box .icon i
+{
+    list-style: none;
+    box-shadow: rgba(0,0,0,0.24) 0px 3px 8px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    color: #8a8a8a;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.shop .container .right_box .product_box .product_container .box .img_box .icon i:hover
+{
+    color: #fff;
+    background: #cd1376;
+}
+
+.shop .container .right_box .product_box .product_container .box:hover .img_box .icon
+{
+    margin-left: -40px;
+}
+.shop .container .right_box .product_box .product_container .box .details
+{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.shop .container .right_box .product_box .product_container .box .details h3
+{
+    text-align: center;
+    color: #232323;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.shop .container .right_box .product_box .product_container .box .details p
+{
+    margin-top: 5px;
+    text-align: center;
+    color: #cd1376;
+    font-size: 16px;
+}
+.shop .container .right_box .product_box .product_container .box .details button
+{
+    margin-top: 20px;
+    margin-left: 48px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    color: #232323;
+    background: #fed700;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.shop .container .right_box .product_box .product_container .box .details button:hover
+{
+    color: #fed700;
+    background: #232323;
+}
+
+.product_details
+{
+    width: 900px;
+    height: 430px;
+    position: fixed;
+    top: 70px;
+    left: 170px;
+    background: #fff;
+    box-shadow: rgba(0,0,0,0.24) 0px 3px 8px;
+    border: 1px solid #f6f6f6;
+    border-radius: 5px;
+    padding: 20px 30px;
+}
+.product_details .close_btn
+{
+    float: right;
+    border: none;
+    outline: none;
+    background: none;
+    color: #cd1376;
+    font-size: 22px;
+    cursor: pointer;
+}
+.product_details .container
+{
+    width: 100%;
+    display: flex;
+}
+.product_details .container .img_box
+{
+    padding: 20px 20px;
+    background: #f6f6f6;
+    border-radius: 10px;
+}
+.product_details .container .img_box img
+{
+    height: 270px;
+    width: 270px;
+}
+.product_details .container .info
+{
+    margin-top: 30px;
+    margin-left: 40px;
+}
+.product_details .container .info h4
+{
+    color: #8a8a8a;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 6000;
+    letter-spacing: 1px;
+}
+.product_details .container .info h2
+{
+    margin-top: 30px;
+    color: #232323;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 600;
+}
+.product_details .container .info p
+{
+    margin-top: 10px;
+    color: #8a8a8a;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.product_details .container .info h3
+{
+    margin-top: 30px;
+    color: #cd1376;
+    font-size: 24px;
+}
+.product_details .container .info button
+{
+    margin-top: 10px;
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+    background: none;
+    background: #cd1376;
+    color: #f6f6f6;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+/* For screens smaller than 768px (tablets) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .box {
+        width: calc(50% - 20px);
+    }
+}
+
+/* For screens smaller than 576px (phones) */
+@media (max-width: 576px) {
+    .box {
+        width: 100%;
+    }
+}

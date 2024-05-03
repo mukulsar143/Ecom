@@ -12,7 +12,7 @@ class Register(APIView):
         serializer = UserRegister(data = data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response( {'data' : serializer.data, 'success' : True})
         
         return Response({'status' : 400, 'message' : 'Some Errors Occurance', 'errors ': serializer.errors})    
     
