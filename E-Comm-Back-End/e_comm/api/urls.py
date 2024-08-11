@@ -1,26 +1,22 @@
 from django.urls import path, include
-from .views import *
 from rest_framework.routers import DefaultRouter
-from rest_framework_nested import routers
+from api.views import (
+    ProductViewset, 
+    CategoryViewset, 
+    ReviewViewset, 
+    CartViewset, 
+    CartItemViewset, 
+    OrderViewset
+)
 
-router = routers.DefaultRouter()
-
-router.register("products", ProductViewset)
-router.register("category", CategoryViewset)
-router.register("carts", CartViewset)
-router.register("order", OrderViewset, basename="orders")
-
-product_router = routers.NestedDefaultRouter(router, "products", lookup = "product")
-product_router.register("reviews", ReviewViewset, basename="product")
-
-cart_item = routers.NestedDefaultRouter(router, "carts", lookup = 'cart')
-cart_item.register("items", CartitemViewset, basename="items")
-
+router = DefaultRouter()
+router.register('products', ProductViewset, basename='products')
+router.register('categories', CategoryViewset, basename='categories')
+router.register('cart', CartViewset, basename='cart')
+router.register('orders', OrderViewset, basename='orders')
 
 urlpatterns = [
-    path("", include(router.urls)),
-    path("", include(product_router.urls)),
-    path("", include(cart_item.urls)),
-    path("cartitem/", CartItemView.as_view()),
-
+    path('', include(router.urls)),
+    path('products/<int:product_pk>/reviews/', ReviewViewset.as_view({'get': 'list', 'post': 'create'}), name='product-reviews'),
+    path('cart/<uuid:cart_id>/items/', CartItemViewset.as_view({'get': 'list', 'post': 'create', 'patch': 'partial_update', 'delete' : 'destroy'}), name='cart-items')
 ]

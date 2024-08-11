@@ -4,18 +4,28 @@ import logo from "../../Pictures/images/banners/banner.jpg";
 import logo2 from "../../Pictures/images/banners/1.png";
 import { AiFillHeart, AiFillEye, AiOutlineClose } from "react-icons/ai";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart, fetchProducts } from "../../redux/actions/cartActions";
 
 
-export default function Shop({allTrendingProducts, products, setproduct, addToCart}) {
+export default function Shop({allTrendingProducts, products, setproduct}) {
 
   const [detail, setdetail] = useState(false)
   const [prodetails, setprodetails] = useState([])
   const { id } = useParams();
   const cartpro = products.find(cartpro => cartpro.id === parseInt(id));
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     allTrendingProducts()
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+
 
   const filterproduct = async (category) => {
     const res = await fetch("http://127.0.0.1:8000/api/products/");
@@ -53,7 +63,7 @@ export default function Shop({allTrendingProducts, products, setproduct, addToCa
             <h2>{prodetails.name}</h2>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, deleniti exercitationem pariatur voluptatibus dolorem obcaecati vitae sapiente ex iste quis culpa ad dolor est incidunt quod quisquam unde, consequuntur sequi?</p>
             <h3>${prodetails.price}</h3>
-            <button onClick={()=> addToCart(cartpro)}>Add to Cart</button>
+            <button onClick={() => dispatch(addToCart(cartpro))}>Add to Cart</button>
           </div>
         </div>
       </div>
@@ -72,9 +82,9 @@ export default function Shop({allTrendingProducts, products, setproduct, addToCa
               <div className="box">
                 <ul>
                 <li onClick={(()=>allTrendingProducts())}>All</li>
-                  <li onClick={(()=>filterproduct('48b0bc8b-d02a-464d-b9eb-63b823278e67'))}>TV</li>
-                  <li onClick={(()=>filterproduct('b98ee365-5899-478a-bd57-3759544ec13e'))}>Mobiles</li>
-                  <li onClick={(()=>filterproduct('f317107a-02c0-45e4-961a-46f50f6f5d77'))}>Clothes</li>
+                  <li onClick={(()=>filterproduct('76570c45-f34b-4f4f-b629-01ec5779d6f6'))}>TV</li>
+                  <li onClick={(()=>filterproduct('85c3ef7e-4534-45f2-8183-64c3c072b58f'))}>Mobiles</li>
+                  <li onClick={(()=>filterproduct('b98ee365-5899-478a-bd57-3759544ec13e'))}>Clothes</li>
                   <li onClick={(()=>filterproduct('f317107a-02c0-45e4-961a-46f50f6f5d77'))}>Jwellery</li>
                   <li onClick={(()=>filterproduct('48b0bc8b-d02a-464d-b9eb-63b823278e67'))}>Acceroies</li>
                   <li onClick={(()=>filterproduct('b98ee365-5899-478a-bd57-3759544ec13e'))}>Electronics</li>
@@ -114,7 +124,7 @@ export default function Shop({allTrendingProducts, products, setproduct, addToCa
                         <div className="details">
                           <h3>{pro.name}</h3>
                           <p>Rs. {pro.price}</p>
-                          <button onClick={()=>addToCart(cartpro)}>Add to Cart</button>
+                          <button onClick={() => dispatch(addToCart(pro))}>Add to Cart</button>
                         </div>
                       </div>
                     </>

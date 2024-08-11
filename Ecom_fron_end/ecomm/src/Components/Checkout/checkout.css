@@ -1,0 +1,180 @@
+/* Import a unique font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* Checkout Container */
+.checkout {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Form Container */
+.contact {
+    padding: 20px 40px;
+    width: 100%;
+}
+
+.contact .container {
+    padding: 10px 20px;
+    min-width: 100%;
+}
+
+.contact .container .form {
+    background: #f6f6f6;
+    padding: 20px 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 0 auto;
+    border-top: 3px solid #fed700;
+    border-radius: 5px;
+    max-width: 600px;
+}
+
+.contact .container .form h2 {
+    color: #cd176c;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Form Box */
+.contact .container .form .box {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.contact .container .form .box .label {
+    flex: 1;
+    min-width: 150px;
+}
+
+.contact .container .form .box .label h4 {
+    color: #232323;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+.contact .container .form .box .input {
+    flex: 2;
+    min-width: 200px;
+}
+
+.contact .container .form .box .input input,
+.contact .container .form .box .input textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 2px solid #8a8a8a;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+
+.contact .container .form button {
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    background: #fed700;
+    color: #232323;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.contact .container .form button:hover {
+    background: #232323;
+    color: #fed700;
+}
+
+/* Form Styles for Checkout */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: #fed700;
+    color: #232323;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #232323;
+    color: #fed700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .checkout,
+    .contact .container .form {
+        padding: 15px;
+    }
+
+    input[type="text"],
+    contact .container .form .box .input input,
+    contact .container .form .box .input textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .checkout,
+    .contact .container .form {
+        padding: 10px;
+    }
+
+    input[type="text"],
+    contact .container .form .box .input input,
+    contact .container .form .box .input textarea {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

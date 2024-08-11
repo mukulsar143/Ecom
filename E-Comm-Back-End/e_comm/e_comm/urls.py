@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     # path('pay/', include('razorpaybackend.urls')),
-    path('api/accounts/', include('UserProfile.urls')),
+    path('api/accounts/', include('user_details.urls')),
 ]
 
 if settings.DEBUG:

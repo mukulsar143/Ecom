@@ -1,105 +1,94 @@
-import "./cart.css";
+// src/components/Cart.js
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from 'react-icons/ai';
-import { useState } from "react";
+import {
+  fetchCart,
+  updateCartItem,
+  removeFromCart,
+} from '../../redux/actions/cartActions';
+import './cart.css';  
 
-export default function Cart({ cart, setCart }) {
-  const [total, setTotal] = useState(0);
+const Cart = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.items);
+  const total = useSelector((state) => state.cart.total);
 
-  // Function to increment item quantity in the cart
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
+
   const inccart = (product) => {
-    const updatedCart = cart.map(item => {
-      if (item.id === product.id) {
-        return { ...item, quantity: item.quantity + 1 };
-      }
-      return item;
-    });
-
-    setCart(updatedCart);
-    updateTotal(updatedCart);
+    const item = cart.find((item) => item.product.id === product.id);
+    const updatedItem = { ...item, quantity: item.quantity + 1 };
+    dispatch(updateCartItem(updatedItem));
   };
 
-  // Function to decrement item quantity in the cart
   const deccart = (product) => {
-    const updatedCart = cart.map(item => {
-      if (item.id === product.id && item.quantity > 1) {
-        return { ...item, quantity: item.quantity - 1 };
-      }
-      return item;
-    });
-
-    setCart(updatedCart);
-    updateTotal(updatedCart);
+    const item = cart.find((item) => item.product.id === product.id);
+    if (item.quantity > 1) {
+      const updatedItem = { ...item, quantity: item.quantity - 1 };
+      dispatch(updateCartItem(updatedItem));
+    }
   };
 
-  // Function to remove item from the cart
   const remcart = (product) => {
-    const updatedCart = cart.filter(item => item.id !== product.id);
-    setCart(updatedCart);
-    updateTotal(updatedCart);
-  };
-
-  // Function to calculate total price
-  const updateTotal = (cart) => {
-    const totalPrice = cart.reduce((acc, item) => {
-      return acc + (item.price * item.quantity);
-    }, 0);
-    setTotal(totalPrice);
+    const item = cart.find((item) => item.product.id === product.id);
+    dispatch(removeFromCart(item.id));
   };
 
   return (
-    <>
-      <div className="cart">
-        <h3># CART</h3>
-        {cart.length === 0 && (
-          <>
-            <div className="empty_cart">
-              <h2>Empty Cart</h2>
-              <Link to="/shop">
-                <button>Shopping</button>
-              </Link>
-            </div>
-          </>
-        )}
-        <div className="container">
-          {cart.map((pro) => {
-            return (
-              <div className="box" key={pro.id}>
+    <div className="cart">
+      <h3># CART</h3>
+      {cart.length === 0 ? (
+        <div className="empty_cart">
+          <h2>Empty Cart</h2>
+          <Link to="/shop">
+            <button>Shopping</button>
+          </Link>
+        </div>
+      ) : (
+        <>
+          <div className="container">
+            {cart.map((item) => (
+              <div className="box" key={item.id}>
                 <div className="img_box">
-                  <img src={pro.image} alt="" />
+                  <img src={`http://127.0.0.1:8000/${item.product.image}/`} alt={item.product.name} />
                 </div>
                 <div className="details">
                   <div className="info">
-                    <h4>{pro.category}</h4>
-                    <h3>{pro.name}</h3>
-                    <p>Price: ${pro.price}</p>
-                    <p>Total: ${pro.price * pro.quantity}</p>
+                    <h4>{item.product.category}</h4>
+                    <h3>{item.product.name}</h3>
+                    <p>Price: ${item.product.price}</p>
+                    <p>Total: ${item.product.price * item.quantity}</p>
                   </div>
                   <div className="quantity">
-                    <button onClick={() => inccart(pro)}>+</button>
-                    <input type="number" value={pro.quantity} readOnly />
-                    <button onClick={() => deccart(pro)}>-</button>
+                    <button onClick={() => inccart(item.product)}>+</button>
+                    <input type="number" value={item.quantity} readOnly />
+                    <button onClick={() => deccart(item.product)}>-</button>
                   </div>
                   <div className="icon">
-                    <button onClick={() => remcart(pro)}>
+                    <button onClick={() => remcart(item.product)}>
                       <AiOutlineClose />
                     </button>
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
-        <div className="bottom">
-          {
-            cart.length > 0 &&
+            ))}
+          </div>
+          <div className="bottom">
             <div className="total">
               <h4>Total: ${total}</h4>
-              <button>Checkout</button>
+              <Link to="/checkout">
+                <button>Checkout</button>
+              </Link>
             </div>
-          }
-        </div>
-      </div>
-    </>
+          </div>
+        </>
+      )}
+    </div>
   );
-}
+};
+
+export default Cart;

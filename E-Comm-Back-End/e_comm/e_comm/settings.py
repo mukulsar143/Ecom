@@ -1,3 +1,4 @@
+
 """
 Django settings for e_comm project.
 
@@ -40,9 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'api',
-    'UserProfile',
+    'user_details',
     'django_filters',
-    'storeapp',
+    'store',
     'rest_framework.authtoken',
     'corsheaders',
     # 'razorpaybackend', 
